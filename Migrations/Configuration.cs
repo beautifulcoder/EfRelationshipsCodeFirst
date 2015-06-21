@@ -55,6 +55,10 @@ namespace EfRelationshipsCodeFirst.Migrations
                     Id = 2,
                     Name = "B"
                 });
+            if (context.Users.Count() == 0)
+            {
+                context.SaveChanges();
+            }
             var user1 = context.Users.Include("Programs").First(x => x.Id == 1);
             var user2 = context.Users.Include("Programs").First(x => x.Id == 2);
             if (user1.Programs.Count == 0)
